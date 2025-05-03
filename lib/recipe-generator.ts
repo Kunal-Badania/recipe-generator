@@ -1,11 +1,11 @@
 "use server"
 
 import type { Recipe } from "@/types/recipe"
-import { GroqChat } from "@/lib/groq-client"
+import { generateRecipe } from "@/lib/groq-client"
 
 export async function generateRecipes(ingredients: string, cuisine = "", dietaryRestrictions = ""): Promise<Recipe[]> {
   try {
-    const groq = new GroqChat()
+    const groq = { generateRecipe }
 
     // Build the prompt
     let prompt = `Generate 4 unique recipe ideas using these ingredients: ${ingredients}.`
